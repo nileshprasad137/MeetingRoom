@@ -1,5 +1,7 @@
 <?php
 
+use App\Post;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +22,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/posts', 'PostsController@index');
+
+Route::get('/find', function(){
+    $posts = Post::all();
+    print_r($posts);
+});
