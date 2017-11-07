@@ -27,8 +27,20 @@ class ThreadsController extends Controller
     public function index()
     {
         $threads = Thread::all();
-        $posts = Thread::find(1)->posts;        
-        //  $posts = Post::all();// This can be done when not using eleoquent ORM
-        return view('threads')->with('threads', $threads)->with('posts',$posts);           
+        //$posts = Thread::find(2)->posts;      
+        //$posts = Thread::find(1)->posts;  
+        //$posts = Thread::find(1)->post_one;  
+        //  $posts = Post::all();// This can be done when not using eloquent ORM
+        //$index = 1;
+        foreach($threads as $value)
+        {
+            $posts[$value->id] = Thread::find($value->id)->posts;    
+            //$index++;
+        }
+
+        //$posts[1] = Thread::find(1)->posts;
+        //$posts[2] = Thread::find(2)->posts;
+        
+        return view('threads')->with('threads', $threads)->with('posts',$posts);         
     }
 }

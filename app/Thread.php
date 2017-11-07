@@ -11,5 +11,9 @@ class Thread extends Model
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }   
+    public function post_one()
+    {
+        return $this->hasOne(Post::class);
     }    
 }
