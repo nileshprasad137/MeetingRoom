@@ -25,15 +25,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/posts', 'PostsController@index');
 
 Route::get('/find', function(){
-    $users = DB::table('users')
+    $results = DB::table('users')
     ->join('chatthread', 'users.id', '=', 'chatthread.user_id')    
     ->select('users.*', 'chatthread.id', 'chatthread.thread_title')
     ->get();
 
-    var_dump($users[0]->thread_title);
+    var_dump($results[0]->thread_title);
+    var_dump($results[0]->name);
     //echo $users["0"]["thread_title"];
 });
 
+Route::get('/threads', 'ThreadsController@index');
 /*
 Route::get('/find', function(){
     $posts = Post::all();
