@@ -36,6 +36,11 @@ Route::get('/find', function(){
 });
 
 Route::get('/threads', 'ThreadsController@index');
+
+Route::get('/threads/{thread_id}', 'DiscussionController@index');
+Route::get('/threads/{thread_id}/{post_id}/edit', 'DiscussionController@edit');
+Route::get('/threads/{thread_id}/{post_id}/delete', 'DiscussionController@destroy');
+Route::get('/threads/{thread_id}/addpost', 'DiscussionController@create');
 /*
 Route::get('/find', function(){
     $posts = Post::all();

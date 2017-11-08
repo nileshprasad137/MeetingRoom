@@ -43,7 +43,6 @@ class ThreadsController extends Controller
             //$threadLeader[$thread->id] = User::where('id','=',$thread->user_id)->pluck('name');
             /** This one is perfect. If you know there is only one value to be returned , you can use value() function. */
             $threadLeader[$thread->id] = User::where('id','=',$thread->user_id)->value('name');
-
         }
 
         //$posts[1] = Thread::find(1)->posts;
