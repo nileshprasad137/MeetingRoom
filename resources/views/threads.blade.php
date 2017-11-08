@@ -1,27 +1,34 @@
 @extends('layouts.app')
-
 @section('content')
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="well">Recent Posts</div>
-            @foreach($threads as $row)                
-                <div class="card">
-                    <div class="card-block">
-                        <h4 class="card-title">{{$row->id}}</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">By User -> {{$row->user_id}} </h6>    
-                        <h6 class="card-subtitle mb-2 text-muted">Number of posts -> {{count($posts[$row->id])}}  </h6>
-                        <p class="card-text">{{$row->thread_title}}</p>
-                        <p class="card-text">{{$row->thread_category}}</p>
-                        <button type="button" class="btn btn-success">Edit</button>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-                <hr>
-            @endforeach
-            {{count($posts[2])}}
-            <!--{{count($posts)}}-->
-        </div>
-    </div>
+  <h2>Recent Discussions</h2>
+  <p>Login to start discussions.</p>                                                                                      
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Discussion started by</th>
+        <th>Category</th>
+        <th>Number of Posts</th>
+        <th>Last Updated</th>        
+      </tr>
+    </thead>
+    <tbody>
+    @foreach($threads as $row)        
+      <tr>
+        <td>{{$row->thread_title}}</td>
+        <td>{{$row->user_id}}</td>
+        <td>{{$row->thread_category}}</td>
+        <td>{{count($posts[$row->id])}}</td>        
+        <td>{{$row->updated_at}}</td>        
+      </tr>
+    @endforeach
+    </tbody>
+  </table>
+  </div>
 </div>
+
 @endsection
+
