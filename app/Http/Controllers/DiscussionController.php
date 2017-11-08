@@ -16,9 +16,9 @@ class DiscussionController extends Controller
      */
     public function index($thread_id)
     {
-        $thread_detail = Thread::find($thread_id);
-        $thread_title = $thread_detail->thread_title;
-        return view('discussion')->with('thread_title',$thread_title);
+        $thread = Thread::find($thread_id);
+        $posts = $thread->posts;
+        return view('discussion')->with('thread',$thread)->with('posts',$posts);
     }
 
     /**
