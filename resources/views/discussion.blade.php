@@ -9,7 +9,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
-                <div class="col-md-9">Posted by : <b>{{$post->user_id}}</b></div>
+                <div class="col-md-9">Posted by : <b>{{$author[$post->id]}}</b></div>
                 <div class="col-md-3">Posted at : <b>{{$post->created_at}}</b></div>                
             </div>            
         </div>

@@ -18,7 +18,11 @@ class DiscussionController extends Controller
     {
         $thread = Thread::find($thread_id);
         $posts = $thread->posts;
-        return view('discussion')->with('thread',$thread)->with('posts',$posts);
+        foreach($posts as $post)
+        {
+            $author[$post->id] = User::where('id','=',$post->user_id)->value('name');
+        }
+        return view('discussion')->with('thread',$thread)->with('posts',$posts)->with('author',$author);
     }
 
     /**
