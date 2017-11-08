@@ -9,20 +9,20 @@
     <thead>
       <tr>
         <th>Title</th>
-        <th>Discussion started by</th>
+        <th>Started by</th>
         <th>Category</th>
         <th>Number of Posts</th>
         <th>Last Updated</th>        
       </tr>
     </thead>
     <tbody>
-    @foreach($threads as $row)        
+    @foreach($threads as $thread)        
       <tr>
-        <td>{{$row->thread_title}}</td>
-        <td>{{$row->user_id}}</td>
-        <td>{{$row->thread_category}}</td>
-        <td>{{count($posts[$row->id])}}</td>        
-        <td>{{$row->updated_at}}</td>        
+        <td>{{$thread->thread_title}}</td>
+        <td>{{$threadLeader[$thread->id]}}</td>
+        <td>{{$thread->thread_category}}</td>
+        <td>{{count($posts[$thread->id])}}</td>        
+        <td>{{$thread->updated_at}}</td>        
       </tr>
     @endforeach
     </tbody>
