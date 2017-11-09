@@ -18,7 +18,11 @@
     <tbody>
     @foreach($threads as $thread)        
       <tr>
-        <td>{{$thread->thread_title}}</td>
+        <td>
+          <a href="{{ route('discussion', [$thread->id]) }}"> 
+            {{$thread->thread_title}}
+          </a>
+        </td>
         <td>{{$threadLeader[$thread->id]}}</td>
         <td>{{$thread->thread_category}}</td>
         <td>{{count($posts[$thread->id])}}</td>        
