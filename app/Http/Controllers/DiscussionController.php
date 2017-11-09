@@ -20,7 +20,7 @@ class DiscussionController extends Controller
         $posts = $thread->posts;
         foreach($posts as $post)
         {
-            $author[$post->id] = User::where('id','=',$post->user_id)->value('name');
+            $author[$post->id] = User::where('id','=',$post->user_id)->get();
         }
         return view('discussion')->with('thread',$thread)->with('posts',$posts)->with('author',$author);
     }
