@@ -35,7 +35,8 @@ Route::get('/find', function(){
     //echo $users["0"]["thread_title"];
 });
 
-Route::get('/threads', 'ThreadsController@index');
+//['uses' => 'FooController@method', 'as' => 'name']
+Route::get('/threads', ['uses' => 'ThreadsController@index', 'as' => 'allthreads']);
 
 Route::get('/threads/{thread_id}', 'DiscussionController@index');
 Route::patch('/threads/{thread_id}/{post_id}/edit', 'DiscussionController@update');
