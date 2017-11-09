@@ -17,7 +17,13 @@
             <div class="row">
                 <div class="col-md-12">{{$post->post_content}}</div>
             </div>
-            <!--<button type="button" class="btn btn-success">Edit</button>-->        
+            <div class="row">
+                <div class="col-md-12">
+                @if(Auth::check())
+                    <button type="button" class="myButton">Show/Hide Button</button>
+                @endif 
+                </div>
+            </div>                    
         </div>
     </div>
 
