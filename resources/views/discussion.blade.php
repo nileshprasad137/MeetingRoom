@@ -2,8 +2,7 @@
 @section('content')
 
 <div class="container">
-  <h2>{{$thread->thread_title}}</h2>
-  <p>Login to start discussions.</p>   
+  <h2>{{$thread->thread_title}}</h2>    
   
   @foreach($posts as $post)
     <div class="panel panel-default">
@@ -36,4 +35,3 @@
   @endforeach                                                                                    
 </div>
 @endsection
-

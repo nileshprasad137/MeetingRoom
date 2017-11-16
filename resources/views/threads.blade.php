@@ -3,7 +3,7 @@
 
 <div class="container">
   <h2>Recent Discussions</h2>
-  <p>Login to start discussions.</p>                                                                                      
+  <p></p>                                                                                      
   <div class="table-responsive">          
   <table class="table table-hover">
     <thead>
