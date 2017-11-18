@@ -37,12 +37,12 @@ Route::get('/find', function(){
 
 //['uses' => 'FooController@method', 'as' => 'name']
 Route::get('/threads', ['uses' => 'ThreadsController@index', 'as' => 'allthreads']);
-Route::post('/threads/create',['as'=>'threads.create','uses'=>'ThreadsController@store']);
+Route::post('/threads/create', ['as'=>'threads.create','uses'=>'ThreadsController@store']);
 
 Route::get('/threads/{thread_id}', ['uses' => 'DiscussionController@index', 'as' => 'discussion']);
 Route::patch('/threads/{thread_id}/{post_id}/edit', 'DiscussionController@update');
 Route::delete('/threads/{thread_id}/{post_id}/delete', 'DiscussionController@destroy');
-Route::get('/threads/{thread_id}/addpost', 'DiscussionController@create');
+Route::post('/threads/{thread_id}/createpost', ['as'=>'posts.create','uses'=>'PostsController@store']);
 /*
 Route::get('/find', function(){
     $posts = Post::all();

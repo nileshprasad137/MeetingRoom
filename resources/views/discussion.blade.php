@@ -32,22 +32,18 @@
             </div>                                
         </div>
     </div>
-  @endforeach    
-  <!--
-    <div class="row">
-        Create a Post:
-        <textarea name="editor" id="ckview" cols="5" rows="5">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis hic doloremque ex corporis provident 
-            recusandae. Molestias alias dignissimos molestiae minus quia consectetur sint, maxime quidem. Repellat temporibus 
-            similique iusto eaque.
-        </textarea>                                                                                        
-    </div>
-    <div class="row">
-        @if(Auth::check())       
-        <a href="#" data-toggle="modal" data-target="#create_thread">
-            <button type="button" class="btn btn-primary">Create New Post</button> 
-        </a>
-        @endif 
-    </div>
-    -->
+  @endforeach   
+  <hr>
+    <div class="row">    
+        @if(Auth::check())      
+        <form method="post" action="{{ route('posts.create', $thread->id) }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="form-group">
+                <label for="#postcreate">Create a post:</label>
+                <textarea class="form-control" name="post_content" id="postcreate" rows="5" cols="5" style="resize: none;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Publish Post</button> 
+        </form>  
+        @endif                                                                                     
+    </div>          
 @endsection
