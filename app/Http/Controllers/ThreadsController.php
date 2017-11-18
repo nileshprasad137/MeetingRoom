@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Thread;
 use App\User;
+
 
 class ThreadsController extends Controller
 {
@@ -49,5 +51,27 @@ class ThreadsController extends Controller
         //$posts[2] = Thread::find(2)->posts;
         
         return view('threads')->with('threads', $threads)->with('posts', $posts)->with('threadLeader', $threadLeader);         
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $thread = new Thread;
+        $thread->thread_title = $request->thread_title;
+        $thread->user_id = Auth::user()->id;
+        $thread->thread_category = $request->category;
+             
+        //$thread->content = $request->content;
+        $thread->save();
+     
+        //Session::flash('success', 'Your article has been published.');
+        return redirect()->route('allthreads');
+
+        //return Thread::create([ 'thread_title' => request('thread_title'), 'user_id' => Auth::id()  ]);
     }
 }
