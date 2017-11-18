@@ -18,11 +18,19 @@ class DiscussionController extends Controller
     {
         $thread = Thread::find($thread_id);
         $posts = $thread->posts;
-        foreach($posts as $post)
+        
+        if($posts->isEmpty())
         {
-            $author[$post->id] = User::where('id','=',$post->user_id)->get();
+            echo "No Posts";
+        }     
+        else
+        {
+            foreach($posts as $post)
+            {
+                $author[$post->id] = User::where('id','=',$post->user_id)->get();                
+            }
+            return view('discussion')->with('thread',$thread)->with('posts',$posts)->with('author',$author);
         }
-        return view('discussion')->with('thread',$thread)->with('posts',$posts)->with('author',$author);
     }
 
     /**
