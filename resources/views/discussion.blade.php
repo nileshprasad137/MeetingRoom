@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-  <h2>{{$thread->thread_title}}</h2>    
+    <h2>{{$thread->thread_title}}</h2>       
   
   @foreach($posts as $post)
     <div class="panel panel-default">
@@ -32,6 +32,22 @@
             </div>                                
         </div>
     </div>
-  @endforeach                                                                                    
-</div>
+  @endforeach    
+  <!--
+    <div class="row">
+        Create a Post:
+        <textarea name="editor" id="ckview" cols="5" rows="5">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis hic doloremque ex corporis provident 
+            recusandae. Molestias alias dignissimos molestiae minus quia consectetur sint, maxime quidem. Repellat temporibus 
+            similique iusto eaque.
+        </textarea>                                                                                        
+    </div>
+    <div class="row">
+        @if(Auth::check())       
+        <a href="#" data-toggle="modal" data-target="#create_thread">
+            <button type="button" class="btn btn-primary">Create New Post</button> 
+        </a>
+        @endif 
+    </div>
+    -->
 @endsection

@@ -21,7 +21,7 @@ class DiscussionController extends Controller
         
         if($posts->isEmpty())
         {
-            echo "No Posts";
+            return view('discussion')->with('thread',$thread)->with('posts',$posts);
         }     
         else
         {
