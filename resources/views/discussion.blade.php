@@ -20,10 +20,14 @@
                     @if(Auth::id() == $author[$post->id][0]['id'])
                         <div class="row">
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-primary btn-block">Edit</button>
+                                <a href="{{ route('posts.edit', [$thread->id, $post->id] )}}">
+                                    <button type="button" class="btn btn-primary btn-block">Edit</button>
+                                </a>
                             </div>
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-danger btn-block">Delete</button>
+                                <a href="">
+                                    <button type="button" class="btn btn-danger btn-block">Delete</button>
+                                </a>
                             </div>
                         </div>
                     @endif

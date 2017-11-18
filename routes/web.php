@@ -40,7 +40,7 @@ Route::get('/threads', ['uses' => 'ThreadsController@index', 'as' => 'allthreads
 Route::post('/threads/create', ['as'=>'threads.create','uses'=>'ThreadsController@store']);
 
 Route::get('/threads/{thread_id}', ['uses' => 'DiscussionController@index', 'as' => 'discussion']);
-Route::patch('/threads/{thread_id}/{post_id}/edit', 'DiscussionController@update');
+Route::get('/threads/{thread_id}/{post_id}/edit', ['as'=>'posts.edit','uses'=>'PostsController@edit']);
 Route::delete('/threads/{thread_id}/{post_id}/delete', 'DiscussionController@destroy');
 Route::post('/threads/{thread_id}/createpost', ['as'=>'posts.create','uses'=>'PostsController@store']);
 /*
