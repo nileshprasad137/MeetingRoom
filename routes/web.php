@@ -46,7 +46,7 @@ Route::delete('/threads/{thread_id}/{post_id}/delete', 'DiscussionController@des
 Route::post('/threads/{thread_id}/createpost', ['as'=>'posts.create','uses'=>'PostsController@store']);
 Route::get('/threads/{thread_id}/{post_id}/edit', ['as'=>'posts.edit','uses'=>'PostsController@edit']);
 Route::patch('/posts/{post_id}/update', ['as'=>'posts.update','uses'=>'PostsController@update']);
-Route::get('/posts/{post_id}/delete', ['as'=>'posts.delete','uses'=>'PostsController@destroy']);
+Route::delete('/posts/{post_id}/delete', ['as'=>'posts.delete','uses'=>'PostsController@destroy']);
 
 /*
 Route::get('/find', function(){

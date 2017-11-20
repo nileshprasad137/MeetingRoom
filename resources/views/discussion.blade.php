@@ -25,9 +25,11 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ route('posts.delete', $post->id )}}">
-                                    <button type="button" class="btn btn-danger btn-block">Delete</button>
-                                </a>
+                                <form method="post" action="{{ route('posts.delete', $post->id )}}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                                </form>                                
                             </div>
                         </div>
                     @endif
