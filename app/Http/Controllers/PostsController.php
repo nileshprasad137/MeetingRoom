@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 
+use Session;
+
 class PostsController extends Controller
 {
     /**
@@ -66,5 +68,35 @@ class PostsController extends Controller
         //return view('ProductCRUD.edit',compact('product'));
         $post = Post::findOrFail($post_id);        
         return view('editpost')->with('post',$post);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $post_id)
+    {
+        /*
+        $this->validate($request,[
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+        */
+        //$update = Post::find($post_id)->update($request->all());
+        //return response()->json($update);
+
+        //get post data
+        $postData = $request->all();
+        
+        //update post data
+        Post::find($post_id)->update($postData);
+        
+        //store status message
+        Session::flash('success_msg', 'Post updated successfully!');
+
+        return redirect()->route('allthreads');
     }
 }
