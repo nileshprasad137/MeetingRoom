@@ -99,4 +99,22 @@ class PostsController extends Controller
 
         return redirect()->route('allthreads');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($post_id)
+    {
+        $post = Post::findOrFail($post_id);
+    
+        $post->delete();
+
+        return redirect()->route('allthreads');    
+        //Session::flash('flash_message', 'Task successfully deleted!');
+    
+        //return redirect()->route('tasks.index');
+    }
 }

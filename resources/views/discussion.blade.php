@@ -25,7 +25,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="">
+                                <a href="{{ route('posts.delete', $post->id )}}">
                                     <button type="button" class="btn btn-danger btn-block">Delete</button>
                                 </a>
                             </div>
