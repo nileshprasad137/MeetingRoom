@@ -8,7 +8,6 @@ use App\Post;
 use App\Thread;
 use App\User;
 
-
 class ThreadsController extends Controller
 {
     /**
@@ -29,27 +28,12 @@ class ThreadsController extends Controller
      */
     public function index()
     {
-        $threads = Thread::all();
-        //$posts = Thread::find(2)->posts;      
-        //$posts = Thread::find(1)->posts;  
-        //$posts = Thread::find(1)->post_one;  
-        //  $posts = Post::all();// This can be done when not using eloquent ORM
-        //$index = 1;
+        $threads = Thread::all();        
         foreach($threads as $thread)
         {
-            $posts[$thread->id] = Thread::find($thread->id)->posts;    
-            //$threadLeader[$thread->id] = User::select('name')->where('id','=',$thread->user_id)->get();
-            /** 
-             * The above one return an object, the below one will return an array. 
-            **/
-            //$threadLeader[$thread->id] = User::where('id','=',$thread->user_id)->pluck('name');
-            /** This one is perfect. If you know there is only one value to be returned , you can use value() function. */
+            $posts[$thread->id] = Thread::find($thread->id)->posts;                
             $threadLeader[$thread->id] = User::where('id','=',$thread->user_id)->value('name');
-        }
-
-        //$posts[1] = Thread::find(1)->posts;
-        //$posts[2] = Thread::find(2)->posts;
-        
+        }        
         return view('threads')->with('threads', $threads)->with('posts', $posts)->with('threadLeader', $threadLeader);         
     }
 
@@ -65,13 +49,7 @@ class ThreadsController extends Controller
         $thread->thread_title = $request->thread_title;
         $thread->user_id = Auth::user()->id;
         $thread->thread_category = $request->category;
-             
-        //$thread->content = $request->content;
         $thread->save();
-     
-        //Session::flash('success', 'Your article has been published.');
         return redirect()->route('allthreads');
-
-        //return Thread::create([ 'thread_title' => request('thread_title'), 'user_id' => Auth::id()  ]);
     }
 }

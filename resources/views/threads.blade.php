@@ -25,7 +25,7 @@
     @foreach($threads as $thread)        
       <tr>
         <td>
-          <a href="{{ route('discussion', [$thread->id]) }}"> 
+          <a href="{{ route('thread.view', [$thread->id]) }}"> 
             {{$thread->thread_title}}
           </a>
         </td>

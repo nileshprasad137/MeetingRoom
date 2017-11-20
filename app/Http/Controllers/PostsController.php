@@ -41,19 +41,13 @@ class PostsController extends Controller
      */
 
     public function store(Request $request, $thread_id)
-    {
-        //echo "hello";
+    {       
         $post = new Post;
         $post->post_content = $request->post_content;
         $post->thread_id = $thread_id;
-        $post->user_id = Auth::user()->id;        
-             
-        //$thread->content = $request->content;
+        $post->user_id = Auth::user()->id;
         $post->save();
-     
-        //Session::flash('success', 'Your article has been published.');
-        return redirect()->route('allthreads');
-        //return Thread::create([ 'thread_title' => request('thread_title'), 'user_id' => Auth::id()  ]);
+        return redirect()->route('thread.view', $thread_id);
     }
 
     /**
@@ -64,10 +58,8 @@ class PostsController extends Controller
      */
     public function edit($thread_id, $post_id)
     {
-        //$product= Product::find($id);
-        //return view('ProductCRUD.edit',compact('product'));
         $post = Post::findOrFail($post_id);        
-        return view('editpost')->with('post',$post);
+        return view('editpost')->with('post',$post)->with('thread_id', $thread_id);
     }
 
     /**
@@ -77,27 +69,20 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $post_id)
+    public function update(Request $request, $thread_id, $post_id)
     {
-        /*
+        
         $this->validate($request,[
-            'title' => 'required',
-            'description' => 'required'
+            'post_content' => 'required'            
         ]);
-        */
-        //$update = Post::find($post_id)->update($request->all());
-        //return response()->json($update);
 
         //get post data
         $postData = $request->all();
         
         //update post data
         Post::find($post_id)->update($postData);
-        
-        //store status message
-        Session::flash('success_msg', 'Post updated successfully!');
 
-        return redirect()->route('allthreads');
+        return redirect()->route('thread.view', $thread_id);
     }
 
     /**
@@ -106,15 +91,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($post_id)
+    public function destroy($thread_id,$post_id)
     {
-        $post = Post::findOrFail($post_id);
-    
+        $post = Post::findOrFail($post_id);    
         $post->delete();
-
-        return redirect()->route('allthreads');    
-        //Session::flash('flash_message', 'Task successfully deleted!');
-    
-        //return redirect()->route('tasks.index');
+        return redirect()->route('thread.view', $thread_id);       
     }
 }

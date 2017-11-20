@@ -92,8 +92,7 @@
 
                 <p>
                 <br>
-                <b>Meeting Room is an online discussion site where people can hold conversations in the form of posted messages.</b>
-                
+                <b>Meeting Room is an online discussion site where people can hold conversations in the form of posted messages.</b>                
                 </p>
             </div>
         </div>
