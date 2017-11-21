@@ -14,3 +14,5 @@
 </div>
 
 @endsection
+<script src="{{url('js/vendor/tinymce/js/tinymce/tinymce.min.js')}}"></script>
+<script>tinymce.init({ selector:'#postedit' });</script>

@@ -18,7 +18,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-9">{{$post->post_content}}</div>
+                <div class="col-md-9">{!!$post->post_content!!}</div>
                 <div class="col-md-3">
                 @if(Auth::check())
                     @if(Auth::id() == $author[$post->id][0]['id'])
@@ -55,5 +55,8 @@
             <button type="submit" class="btn btn-primary">Publish Post</button> 
         </form>  
         @endif                                                                                     
-    </div>          
+    </div>
+</div>        
 @endsection
+<script src="{{url('js/vendor/tinymce/js/tinymce/tinymce.min.js')}}"></script>
+<script>tinymce.init({ selector:'#postcreate' });</script>
