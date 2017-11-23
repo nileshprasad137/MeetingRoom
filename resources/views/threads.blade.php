@@ -22,6 +22,11 @@
       </tr>
     </thead>
     <tbody>
+    @if($threads->isEmpty())
+      <tr>
+        <td colspan="5">No Threads Yet</td>
+      </tr>
+    @endif
     @foreach($threads as $thread)        
       <tr>
         <td>

@@ -28,13 +28,20 @@ class ThreadsController extends Controller
      */
     public function index()
     {
-        $threads = Thread::all();        
-        foreach($threads as $thread)
+        $threads = Thread::all();   
+        if($threads->isEmpty())
         {
-            $posts[$thread->id] = Thread::find($thread->id)->posts;                
-            $threadLeader[$thread->id] = User::where('id','=',$thread->user_id)->value('name');
-        }        
-        return view('threads')->with('threads', $threads)->with('posts', $posts)->with('threadLeader', $threadLeader);         
+            return view('threads')->with('threads', $threads);  
+        }
+        else
+        {
+            foreach($threads as $thread)
+            {
+                $posts[$thread->id] = Thread::find($thread->id)->posts;                
+                $threadLeader[$thread->id] = User::where('id','=',$thread->user_id)->value('name');
+            }        
+            return view('threads')->with('threads', $threads)->with('posts', $posts)->with('threadLeader', $threadLeader);  
+        }           
     }
 
     /**

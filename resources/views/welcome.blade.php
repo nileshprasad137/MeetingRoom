@@ -86,7 +86,9 @@
 
                 <div class="links">
                     <a href="{{ route('allthreads') }}">See All Discussions</a>
-                    <a href="{{ route('register') }}">SignUp to start a discussion</a>                    
+                    @if(!Auth::check())
+                        <a href="{{ route('register') }}">SignUp to start a discussion</a> 
+                    @endif                   
                     <a href="https://github.com/nileshprasad137/meetingroom">GitHub</a>
                 </div>
 
