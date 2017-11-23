@@ -46,6 +46,8 @@ Route::get('/threads/{thread_id}/{post_id}/edit', ['as'=>'posts.edit','uses'=>'P
 Route::patch('/threads/{thread_id}/posts/{post_id}/update', ['as'=>'posts.update','uses'=>'PostsController@update']);
 Route::delete('/threads/{thread_id}/posts/{post_id}/delete', ['as'=>'posts.delete','uses'=>'PostsController@destroy']);
 
+
+Route::get('profile', 'UserController@profile');
 /*
 Route::get('/find', function(){
     $posts = Post::all();
