@@ -48,6 +48,7 @@ Route::delete('/threads/{thread_id}/posts/{post_id}/delete', ['as'=>'posts.delet
 
 
 Route::get('profile', 'UserController@profile');
+Route::post('profile', ['uses'=>'UserController@update_avatar', 'as'=>'avatar.update']);
 /*
 Route::get('/find', function(){
     $posts = Post::all();
