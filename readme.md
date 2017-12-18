@@ -6,8 +6,11 @@ MeetingRoom is a minimalistic discussion forum developed using Laravel Framework
 
 - Implemented All CRUD operations for post or thread creation, deletion or updates.
 - Used Laravel's Eloquent ORM for database operations.
-- Profile Picture Upload
-- Used MVC Architecture to separate front and back end
+- Profile Picture Upload.
+- Used Blade Template Engine.
+- Used MVC Architecture to separate front and back end.
+
+And more..
 
 ## Todo-List
 
